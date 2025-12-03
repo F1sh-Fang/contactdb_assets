@@ -1,20 +1,40 @@
-
 <?xml version="1.0"?>
-<robot name="object">
-  <link name="object">
+<robot name="toothpaste">
+  
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.000000 -0.000000 0.019017" rpy="0 0 0"/>
+      <mass value="0.0559"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
     <visual>
-      <origin xyz="0.0 0.0 0.0"/>
+      <origin xyz="0.000000 -0.000000 0.019017" rpy="0.000000 -0.000000 -1.572132"/>
       <geometry>
-        <mesh filename="toothpaste.stl" scale="1.00 1.00 1.00"/>
+        <mesh filename="toothpaste.stl"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0.0 0.0 0.0"/>
+      <origin xyz="0.000000 -0.000000 0.019017" rpy="0.000000 -0.000000 -1.572132"/>
       <geometry>
-        <mesh filename="toothpaste.stl" scale="1.00 1.00 1.00"/>
+        <mesh filename="toothpaste.stl"/>
       </geometry>
     </collision>
   </link>
+
+  <link name="center_of_mass"/>
+
+  <link name="obb_center"/>
+
+  <joint name="base_to_com" type="fixed">
+    <parent link="base_link"/>
+    <child link="center_of_mass"/>
+    <origin xyz="-0.000000 -0.000000 0.019017" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="base_to_obb" type="fixed">
+    <parent link="base_link"/>
+    <child link="obb_center"/>
+    <origin xyz="0.000680 -0.002836 0.019081" rpy="0 0 0"/>
+  </joint>
+
 </robot>
-    
-                    

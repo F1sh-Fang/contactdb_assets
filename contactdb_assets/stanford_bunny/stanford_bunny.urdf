@@ -1,20 +1,40 @@
-
 <?xml version="1.0"?>
-<robot name="object">
-  <link name="object">
+<robot name="stanford_bunny">
+  
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.000000 0.000000 0.048237" rpy="0 0 0"/>
+      <mass value="0.2326"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
     <visual>
-      <origin xyz="0.0 0.0 0.0"/>
+      <origin xyz="-0.000000 0.000000 0.048237" rpy="0.000000 -0.000000 -1.195756"/>
       <geometry>
-        <mesh filename="stanford_bunny.stl" scale="1.00 1.00 1.00"/>
+        <mesh filename="stanford_bunny.stl"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0.0 0.0 0.0"/>
+      <origin xyz="-0.000000 0.000000 0.048237" rpy="0.000000 -0.000000 -1.195756"/>
       <geometry>
-        <mesh filename="stanford_bunny.stl" scale="1.00 1.00 1.00"/>
+        <mesh filename="stanford_bunny.stl"/>
       </geometry>
     </collision>
   </link>
+
+  <link name="center_of_mass"/>
+
+  <link name="obb_center"/>
+
+  <joint name="base_to_com" type="fixed">
+    <parent link="base_link"/>
+    <child link="center_of_mass"/>
+    <origin xyz="0.000000 0.000000 0.048237" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="base_to_obb" type="fixed">
+    <parent link="base_link"/>
+    <child link="obb_center"/>
+    <origin xyz="-0.005367 -0.002429 0.058623" rpy="0 0 0"/>
+  </joint>
+
 </robot>
-    
-                    
